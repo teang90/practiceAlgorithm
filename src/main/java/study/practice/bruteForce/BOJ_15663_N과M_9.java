@@ -40,6 +40,7 @@ public class BOJ_15663_N과M_9 {
             sb.append("\n");
             return;
         }
+        
         int prev = 0;
         for (int i = 0; i < N; i++) {
             if(visited[i]) continue;

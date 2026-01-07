@@ -36,24 +36,26 @@ public class BOJ_9663_N_Queen {
             return;
         }
 
-        // 내가 생각했던 로직 -> Q, Q 인접한것만 안전하면 재귀로 넣어버림
-        // -> 문제는 Q, Q(안전), Q (뒤에 Q가 더 나옴) -> 그래서 모든 Q의 관계에서 가능여부를 찾아야함
-        for (int c = 0; c < N; c++) {
-            boolean isSafe = false;
-            for (int d = 0; d < row; d++) {
-                if(!isUnSafe(row, c, d, col[d])){
-                    isSafe = true;
-                    break;
-                }
-            }
-
-            if(isSafe) {
-                col[row]=c;
-                sol(row+1);
-                col[row]=0;
-            }
-
-        }
+//        // 내가 생각했던 로직 -> Q, Q 인접한것만 안전하면 재귀로 넣어버림
+//        // -> 문제는 Q, Q(안전), Q (뒤에 Q가 더 나옴) -> 그래서 모든 Q의 관계에서 가능여부를 찾아야함
+//        // 내가 작성한 코드 BEGIN
+//        for (int c = 0; c < N; c++) {
+//            boolean isSafe = false;
+//            for (int d = 0; d < row; d++) {
+//                if(!isUnSafe(row, c, d, col[d])){
+//                    isSafe = true;
+//                    break;
+//                }
+//            }
+//
+//            if(isSafe) {
+//                col[row]=c;
+//                sol(row+1);
+//                col[row]=0;
+//            }
+//
+//        }
+//        // 내가 작성한 코드 END
         for (int c = 0; c < N; c++) {
             boolean isSafe = true;
             for (int d = 0; d < row; d++) {
