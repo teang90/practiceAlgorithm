@@ -10,9 +10,10 @@
 /ZeppelinRemoteNotebooks/
 
 # built files
-/build/
-build
+build/
 docs/
 .gradle
 gradle
 .idea
+gradle*
+hs_err*
