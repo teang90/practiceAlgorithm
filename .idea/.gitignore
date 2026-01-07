@@ -10,7 +10,7 @@
 /ZeppelinRemoteNotebooks/
 
 # built files
-build/
+/build/
 docs/
 .gradle
 gradle
