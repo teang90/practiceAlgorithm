@@ -1,4 +1,4 @@
-package study.practice.bruteForce;
+package study.practice.bruteforce2;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,8 +10,7 @@ public class BOJ_1182_부분수열의합 {
     public static void main(String[] args) throws Exception {
         input();
         sol(0, 0);
-        if(S==0) ANSWER--;  // 진부분집합
-        System.out.println(ANSWER);
+        System.out.println(S==0?--ANSWER:ANSWER);
     }
 
     private static void input() throws Exception {
@@ -34,13 +33,6 @@ public class BOJ_1182_부분수열의합 {
 
         sol(k+1, sum);
         sol(k+1, sum+nums[k]);
-
-//        // 내가 잘 못 생각한 부분, 이미 k 번째 요소를 선택했는데,
-//        // 다시 1~N까지의 요소를 중복으로 넣어서 더하려고함 -> 중복 요소 및 불필요 경우의 수를 더하려고함
-//        for (int i = k; i < N; i++) {
-//           sol(k+1, sum);
-//           sol(k+1, sum+nums[i]);
-//        }
 
     }
 

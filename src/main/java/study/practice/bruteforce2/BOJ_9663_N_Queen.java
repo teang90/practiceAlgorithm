@@ -1,6 +1,5 @@
-package study.practice.bruteForce;
+package study.practice.bruteforce2;
 
-import javax.lang.model.SourceVersion;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -14,7 +13,6 @@ import java.io.InputStreamReader;
 public class BOJ_9663_N_Queen {
     private static int N, ANSWER;
     private static int[] col;
-
 
     public static void main(String[] args) throws Exception {
         input();
@@ -36,42 +34,34 @@ public class BOJ_9663_N_Queen {
             return;
         }
 
-//// 내가 생각했던 로직 -> Q, Q 인접한것만 안전하면 재귀로 넣어버림
-//// -> 문제는 Q, Q(안전), Q (뒤에 Q가 더 나옴) -> 그래서 모든 Q의 관계에서 가능여부를 찾아야함
-//// 내가 작성한 코드 BEGIN
-//        for (int c = 0; c < N; c++) {
-//            boolean isSafe = false;
-//            for (int d = 0; d < row; d++) {
-//                if(!isUnSafe(row, c, d, col[d])){
-//                    isSafe = true;
-//                    break;
-//                }
-//            }
-//
-//            if(isSafe) {
-//                col[row]=c;
-//                sol(row+1);
-//                col[row]=0;
-//            }
-//        }
-//        // 내가 작성한 코드 END
+        for (int _col = 0; _col < N; _col++) {
 
-        for (int c = 0; c < N; c++) {
+
+            /** loop를 (prev < row) 까지 처리하는 이유
+             *   한 행에는 퀸을 하나만 둔다
+             *   위에서부터 한 행씩 내려오며 배치한다
+             *   그래서:
+             *   row 이전 행들 → 이미 퀸이 놓여 있음
+             *   row 이후 행들 → 아직 비어 있음
+             *   ➡️ 비교 대상은 오직 이전 행들뿐
+             */
             boolean isSafe = true;
-            for (int d = 0; d < row; d++) {
-                if(isUnSafe(row, c, d, col[d])){
+            for (int prev = 0; prev < row; prev++) {
+                if(isUnSafe(row, _col, prev, col[prev])){
                     isSafe = false;
                     break;
                 }
             }
 
-            if(isSafe) {
-                col[row]=c;
+            if(isSafe){
+                col[row] = _col;
                 sol(row+1);
                 col[row]=0;
             }
+
         }
     }
+
 
     private static boolean isUnSafe(int x1, int y1, int x2, int y2){
 //        return y1 == y2

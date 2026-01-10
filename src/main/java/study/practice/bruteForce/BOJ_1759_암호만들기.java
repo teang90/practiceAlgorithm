@@ -29,6 +29,7 @@ public class BOJ_1759_암호만들기 {
     }
 
     private static void sol(int k, int startIdx){
+
         if(k==L){
             if(isPossible(selected)){
                 for (int i = 0; i < L; i++) {
